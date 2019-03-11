@@ -1,0 +1,41 @@
+#Author: somu   Date: 25th Feb 2019
+#There are 2 functions given
+#Function "finder" ::  Accepts one input  parameter "data"
+#Function "finder" ::  Calls function "finder_rec" and accepts 2 input parameters
+#                       - data [0,-247,341,1001,741,22]
+#                       - Length of the "data" parameter minus one [5]
+
+def finder(data):
+#   print ("Function finder - List input ::"+ str(data) + " and Length of the List minus one :: " + str(len(data)-1))
+    return finder_rec(data, len(data)-1)
+
+#Function "finder_rec" ::
+#  Accepts two input  parameters (1) "data" and (2) length of the "data" minus one
+#  If the length(2)is equal to "0" then the 1st value in the "data" list is returned
+#  Variable (v1) stores the value of the list in the xth place
+#  Recursive loop to  
+
+
+
+def finder_rec(data,x):
+    if x==0:
+#       print " The value of the 1st list element is " +  str(data[x])
+        return data[x]
+
+#   print ("Function finder_rec - value of variable v1 ::"+ str(data[x]))
+    v1 = data[x]
+#   print ("Function finder_rec - List input ::"+ str(data) + " and Length of the List minus one :: " + str(x-1))
+    v2 = finder_rec (data,x-1)
+#   print ("Function finder_rec - List input ::"+ str(v2) )
+    if v1>v2:
+#       print ("Function finder_rec - List input :: Final IF condition - The value of v1 is " + str(v1))
+        return v1
+    else:
+#       print ("Function finder_rec - List input :: Final IF condition - The value of v2 is " + str(v2))
+        return v2
+
+result = finder([10000,-247,341,1001,741,1002])
+print (str(result))
+
+
+

@@ -1,0 +1,21 @@
+#Author: somu   Date: 25th Feb 2019
+#Calculate a largest number in a given list
+
+def finder(data):
+    return finder_rec(data, len(data)-1)
+
+def finder_rec (data,x):
+    LNumber = data[x]
+    while x > 0:
+        x = x-1
+        value = data[x]
+        if value > LNumber :
+            LNumber = value
+    return LNumber        
+        
+result = finder([1,-247,341,10,741,1])
+print (str(result))
+
+
+
+

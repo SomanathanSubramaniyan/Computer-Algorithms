@@ -1,0 +1,61 @@
+#Author : Somu   Date: 28th Feb 2019
+#Modify the function
+#Identify duplicate data elements in the list
+
+
+from datetime import datetime
+import time
+start_time = time.time()
+
+
+#Variable declaration
+count = 0
+data=[]
+counta = 0
+
+#Functon to identify the duplicates in the list
+def contains_duplicates(elements):
+    counta = 0
+    
+    for i in range(0,len(elements)):
+        for j in range (0,len(elements)):
+            counta = counta+1
+            if i ==j:
+                continue
+            if elements[i] == elements[j]:
+                print ("Number of executions " +str(counta))
+                return True 
+        
+    print ("Number of executions " +str(counta))
+    return False
+
+#Create a test data/list
+while count < 10000:
+    data.append(count)
+    count = count+1
+    
+data.append(1)
+
+#Call the function and print the results
+result = contains_duplicates(data)
+print (str(result))
+print("--- %s seconds ---" % (time.time() - start_time))
+
+
+#Variable declaration
+count = 0
+data=[]
+counta = 0
+start_time = time.time()
+
+#Create a test data/list
+while count < 10000:
+    data.append(count)
+    count = count+1
+    
+data.append(1)
+
+#Call the function and print the results
+result = contains_duplicates(data)
+print (str(result))
+print("--- %s seconds ---" % (time.time() - start_time))
