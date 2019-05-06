@@ -1,8 +1,4 @@
 #Author : Somu   Date: 01st April 2019
-#Bubble Sort
-#Bubble sort has a worst-case and average complexity of ?(n2)
-#The complexity of bubble sort is in both worst and average cases, because the entire array needs to be
-# iterated for every element
 #REference :: https://www.cs.cmu.edu/~adamchik/15-121/lectures/Sorting%20Algorithms/sorting.html
 #Reference :: www.geekviewpoint.com/python/sorting/bucketsort
 #Reference :: https://www.sanfoundry.com/python-program-implement-shell-sort/
@@ -16,6 +12,7 @@ import math
 import pandas as pd
 import ast
 import matplotlib.pyplot as plt
+from matplotlib.ticker import NullFormatter 
 
 
 ####################COMB STARTs Here ##############################################################
@@ -139,7 +136,7 @@ def bubble_sort (data):
 
 #Generate Random data
 def generate_data(count):
-    return [randint(0,10000) for _ in range(count)]
+    return [randint(999,999999) for _ in range(count)]
 
 
 #Call the Sorting Algorithm and calculate the Average time taken
@@ -170,7 +167,7 @@ def CallSortingAvg(program,count):
             if program == "B":
                 result = bubble_sort(data_input)
             elif program == "Q":
-                result = Quicksort(data_input)
+               result = Quicksort(data_input)
             elif program == "BU":
                result = Bucket_sort(data_input)
             elif program == "SS":
@@ -182,35 +179,43 @@ def CallSortingAvg(program,count):
             Avgloop =Avgloop+1
         final.append(round(sum(Avgtime)/len(Avgtime),3))
         Dict[i]=round(sum(Avgtime)/len(Avgtime),3)
-  
+
     return final, Dict
          
 if __name__ == '__main__':
     
     fdict,Dict={},{}
     rows_list=[]
+    print("#############################################################################")
     print("COMP08033 Computational Thinking with Algorithms")
+    print("#############################################################################")
+    print("There are 2 input parameters required to successfully execute this program")
+    print("First Parameter - Enter the sorting code. The various accepted characters are listed below")
+    print("Enter B    for Bucket Sort")
+    print("Enter Q    for Quick  Sort")
+    print("Enter C    for Comb   Sort")
+    print("Enter SS   for Shell  Sort")
+    print("Enter BU   for Bucket Sort")
+    print("Enter All  for Bucket,Quick,Comb and Shell Sort")
+    print("#############################################################################")
+    print("Second Parameter - Enter the average number of runs. Example 10, 20 or 30")
+    print("#############################################################################")
     Sort = str(input ("Enter the sorting code :"))
     count = int(input ("Enter the integer value for number of runs :"))
 
     if ((Sort == "B") or (Sort == "Q") or (Sort == "BU") or (Sort == "SS") or (Sort == "C")) :
       value,Dict = CallSortingAvg(Sort,count)
 
-      #df = pd.DataFrame(Dict,index=[0])
       df = pd.DataFrame(Dict,index=[0])
       df_plot=df.set_index('Type').T
       df_plot.plot(marker='o')
-      plt.axis([0, 11000,0, 50])
+      plt.axis([100, 10200,-1, 50])
       plt.xlabel("Input Size n")
       plt.ylabel('Running Time (milliseconds)')
-      plt.show()
       plt.show()
       print(df)  
 
     elif (Sort=="All"):
-      value,Dict = CallSortingAvg("B",count)
-      rows_list.append(Dict)
-  
       value,Dict = CallSortingAvg("Q",count)
       rows_list.append(Dict)
    
@@ -228,11 +233,10 @@ if __name__ == '__main__':
 
       df_plot=df.set_index('Type').T
       df_plot.plot(marker='o')
-      plt.axis([0, 11000,0, 10])
+      plt.axis([100, 10200,-0.1, 1])
       plt.xlabel("Input Size n")
       plt.ylabel('Running Time (milliseconds)')
       plt.show()
-
       print(df)
       pass
 
